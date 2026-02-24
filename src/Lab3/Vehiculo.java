@@ -5,9 +5,9 @@ public abstract class Vehiculo {
     protected String modelo;
     protected String matricula;
 
-    public Vehiculo(String marca, String modelo, String matricula){
+    public Vehiculo(String marca, String modelo, String matricula) {
         this.marca = marca;
-        this.modelo= modelo;
+        this.modelo = modelo;
         this.matricula = matricula;
 
     }
@@ -38,28 +38,38 @@ public abstract class Vehiculo {
 
 
     @Override
-    public String toString(){
-        String s="";
-        s+= " marca: ";
-        s+= this.marca;
-        s+= " modelo: ";
-        s+= this.modelo;
-        s+= " matricula: ";
-        s+= this.matricula;
+    public String toString() {
+        String s = "";
+        s += " marca: ";
+        s += this.marca;
+        s += " modelo: ";
+        s += this.modelo;
+        s += " matricula: ";
+        s += this.matricula;
         return s;
     }
 
-    public boolean equals(Vehiculo otro){
+    public boolean equals(Vehiculo otro) {
 
-        if(otro == null) return false;
+        if (otro == null) return false;
 
-        return this.marca == otro.marca && this.modelo== otro.modelo && this.matricula == matricula;
+        return this.marca == otro.marca && this.modelo == otro.modelo && this.matricula == matricula;
 
     }
 
-    public Vehiculo clone(){
-
-    return null;
+// gemini
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        // super.clone() se encarga de copiar los atributos primitivos y Strings
+        return super.clone();
     }
+//    public Vehiculo clone(){
+//        Vehiculo otro;
+//        this.marca = otro.marca;
+//        this.modelo = otro.modelo;
+//        this.matricula = otro.matricula;
+//
+//    return otro;
 
 }
+

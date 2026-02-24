@@ -12,6 +12,43 @@ public class VehiculoParaReparar extends Vehiculo{
         this.prioridad = prioridad;
     }
 
+    public String getAveria() {
+        return averia;
+    }
+
+    public void setAveria(String averia) {
+        this.averia = averia;
+    }
+
+    public boolean isReparado() {
+        return reparado;
+    }
+
+    public void setReparado(boolean reparado) {
+        this.reparado = reparado;
+    }
+
+    public int getPrioridad() {
+        return prioridad;
+    }
+
+    public void setPrioridad(int prioridad) {
+        this.prioridad = prioridad;
+    }
+
+    //gemini
+    @Override
+    public VehiculoVenta clone() {
+        try {
+            // Llamamos al clone de la superclase (Vehiculo)
+            // que a su vez llamó a Object.clone()
+            return (VehiculoVenta) super.clone();
+        } catch (CloneNotSupportedException e) {
+            // Esto no debería pasar si implementamos Cloneable
+            return null;
+        }
+    }
+
 
 
 
