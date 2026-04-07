@@ -12,7 +12,7 @@ public class Restaurante extends Comercio{
 
         this.numMesas = numMesas;
         this.capacidad = capacidad;
-        this.menuDiario = new menuDiario[7];
+        this.menuDiario = new String[7];
 
     }
 
@@ -45,7 +45,6 @@ public class Restaurante extends Comercio{
 
     //metodos
 
-    public void
 
 
 
