@@ -1,6 +1,7 @@
 package Lab3;
 
-public class Empleado {
+public class Empleado implements Cloneable {
+    private String DNI;
     private String nombre;
     private String direccion;
     private int telefono;
@@ -10,22 +11,26 @@ public class Empleado {
     private String cargo;
 
 
-    public Empleado(String nombre, String direccion, int telefono, String email, String fechaInicio, double salario, String cargo) {
-        this.nombre = nombre;
-        this.direccion = direccion;
-        this.telefono = telefono;
-        this.email = email;
-        this.fechaInicio = fechaInicio;
-        this.salario = salario;
-        this.cargo = cargo;
+    public Empleado(String DNI, String nombre, String direccion, int telefono, String email, String fechaInicio, double salario, String cargo) {
+        setDireccion(direccion);
+        setCargo(cargo);
+        setEmail(email);
+        setNombre(nombre);
+        setFechaInicio(fechaInicio);
+        setSalario(salario);
+        setTelefono(telefono);
+        setDNI(DNI);
     }
+
 
     public String getNombre() {
         return nombre;
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        if(nombre != null && !nombre.trim().isEmpty()) {
+            this.nombre = nombre;
+        }
     }
 
     public String getDireccion() {
@@ -33,7 +38,10 @@ public class Empleado {
     }
 
     public void setDireccion(String direccion) {
-        this.direccion = direccion;
+        if(direccion != null && !direccion.trim().isEmpty()) {
+            this.direccion = direccion;
+        }
+
     }
 
     public int getTelefono() {
@@ -41,23 +49,37 @@ public class Empleado {
     }
 
     public void setTelefono(int telefono) {
-        this.telefono = telefono;
+
+        if(telefono>0){
+        this.telefono = telefono;}
+
+
+
+
+
     }
 
     public String getEmail() {
-        return email;
+
+            return email;
+
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        if(email != null && !email.trim().isEmpty() && email.contains("@")) {
+            this.email = email;
+        }
     }
 
     public String getFechaInicio() {
+
         return fechaInicio;
     }
 
     public void setFechaInicio(String fechaInicio) {
-        this.fechaInicio = fechaInicio;
+        if(fechaInicio != null && !fechaInicio.trim().isEmpty()) {
+            this.fechaInicio = fechaInicio;
+        }
     }
 
     public double getSalario() {
@@ -65,6 +87,7 @@ public class Empleado {
     }
 
     public void setSalario(double salario) {
+        if(salario>0)
         this.salario = salario;
     }
 
@@ -73,19 +96,58 @@ public class Empleado {
     }
 
     public void setCargo(String cargo) {
-        this.cargo = cargo;
+        if(cargo != null && !cargo.trim().isEmpty()) {
+            this.cargo = cargo;
+        }
     }
 
-    @Override
-    public String toString() {
-        return "Empleado " +
-                "nombre='" + nombre + '\'' +
-                ", direccion='" + direccion + '\'' +
-                ", telefono=" + telefono +
-                ", email='" + email + '\'' +
-                ", fechaInicio='" + fechaInicio + '\'' +
-                ", salario=" + salario +
-                ", cargo='" + cargo + '\'' +
-                ' ';
+    public String getDNI() {
+        return DNI;
     }
+
+    public void setDNI(String DNI) {
+        if(DNI!= null && DNI.trim().length()>0){
+            this.DNI = DNI;
+        }
+
+    }
+
+
+@Override
+    public String toString(){
+        String s;
+        s="";
+        s+="Nombre: "+ nombre+"\n";
+        s+="direccion: " + direccion+"\n";
+        s+= "telefono: "+ telefono+"\n";
+        s+= "email: " + email+"\n";
+        s+= "fecha de inicio: "+ fechaInicio+"\n";
+        s+="salario: " + salario+"\n";
+        s+= "cargo: " + cargo+"\n";
+        s+="Dni: " + DNI+"\n";
+        return s;
+
+    }
+
+    public boolean equals(Object obj){
+
+       if(obj == null) return false;
+       if(this == obj) return true;
+
+//       if(obj.getClass() != getClass()) return false;  es como abajo, explicado en  tema 3
+       if(obj instanceof Empleado) return false;
+
+       Empleado emp= (Empleado) obj;
+       return this.getDNI().equals(emp.getDNI());
+    }
+// lo veremos luego
+    public Object clone() throws CloneNotSupportedException{
+        try{
+        return (Empleado) super.clone();
+
+        }catch (CloneNotSupportedException e){
+            return null;
+        }
+    }
+
 }

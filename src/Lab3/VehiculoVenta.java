@@ -8,7 +8,7 @@ public class VehiculoVenta extends Vehiculo{
 
 
     public VehiculoVenta(String marca, String modelo, String matricula, double precio, int descuento) {
-        super(marca, modelo, matricula);
+        super(marca, modelo);
         this.precio = precio;
         this.descuento= descuento;
 

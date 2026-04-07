@@ -3,12 +3,10 @@ package Lab3;
 public abstract class Vehiculo {
     protected String marca;
     protected String modelo;
-    protected String matricula;
 
-    public Vehiculo(String marca, String modelo, String matricula) {
+    public Vehiculo(String marca, String modelo) {
         this.marca = marca;
         this.modelo = modelo;
-        this.matricula = matricula;
 
     }
 
@@ -17,6 +15,8 @@ public abstract class Vehiculo {
     }
 
     public void setMarca(String marca) {
+        if(marca != null && !marca.trim().isEmpty())
+
         this.marca = marca;
     }
 
@@ -28,13 +28,7 @@ public abstract class Vehiculo {
         this.modelo = modelo;
     }
 
-    public String getMatricula() {
-        return matricula;
-    }
 
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
-    }
 
 
     @Override
@@ -44,16 +38,20 @@ public abstract class Vehiculo {
         s += this.marca;
         s += " modelo: ";
         s += this.modelo;
-        s += " matricula: ";
-        s += this.matricula;
+
         return s;
     }
 
-    public boolean equals(Vehiculo otro) {
+    public boolean equals(Object o) {
 
-        if (otro == null) return false;
+        if (o == null) return false;
+        if (o ==this ) return true;
+        if(o instanceof Vehiculo) return false;
 
-        return this.marca == otro.marca && this.modelo == otro.modelo && this.matricula == matricula;
+        Vehiculo v= (Vehiculo) o;
+
+        return this.getMarca().equals(v.getMarca()) && this.getModelo().equals(v.getModelo());
+
 
     }
 

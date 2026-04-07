@@ -5,15 +5,18 @@ public class Restaurante extends Comercio{
     private int numMesas;
     private int capacidad;
 
-    public Restaurante(){}
 
-    public Restaurante(String[] menuDiario, int numMesas, int capacidad) {
+    public Restaurante(String nombre, String cif, String direccion, int n, String[] menuDiario, int numMesas, int capacidad) {
 
+        super(nombre, cif, direccion, n);
 
-        this.menuDiario = menuDiario;
         this.numMesas = numMesas;
         this.capacidad = capacidad;
+        this.menuDiario = new menuDiario[7];
+
     }
+
+
 
     public String[] getMenuDiario() {
         return menuDiario;
@@ -41,6 +44,8 @@ public class Restaurante extends Comercio{
 
 
     //metodos
+
+    public void
 
 
 
